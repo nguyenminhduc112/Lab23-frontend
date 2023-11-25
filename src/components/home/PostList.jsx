@@ -23,7 +23,7 @@ const style = {
 const PostList = ({ posts }) => {
     const router = useNavigate()
     useEffect(() => {
-        const socket = openSocket('http://localhost:8080')
+        const socket = openSocket(process.env.REACT_APP_URL_DEFAULT_SERVER)
         socket.on('posts', data => {
             if (data.action === 'create' || data.action === 'delete' || data.action === 'update') {
                 router('/')
